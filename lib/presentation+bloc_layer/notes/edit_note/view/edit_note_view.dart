@@ -43,11 +43,7 @@ class _EditNoteViewState extends State<EditNoteView> {
           BlocConsumer<EditNoteBloc, EditNoteState>(
             listener: (listenerContext, state) {
               if (state is EditNoteSuccess) {
-                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                  content: Text('Note is saved'),
-                  duration: Duration(seconds: 2),
-
-                ));
+                displaySnackBar('Note is saved');
                 Navigator.pop(context);
               }
             },
@@ -71,6 +67,25 @@ class _EditNoteViewState extends State<EditNoteView> {
                     ));
               }
               return Container();
+            },
+          ),
+          BlocConsumer<EditNoteBloc, EditNoteState>(
+            listener: (context, state) {
+              if(state is EditNoteDeleteSuccess){
+                displaySnackBar('Your note is deleted');
+                Navigator.pop(context);
+              }
+            },
+            builder: (context, state) {
+              return IconButton(
+                  onPressed: () {
+                    BlocProvider.of<EditNoteBloc>(context)
+                        .add(EditNoteDeleted(id: widget.noteModel.id));
+                  },
+                  icon: const Icon(
+                    Icons.delete,
+                    color: AppColors.white,
+                  ));
             },
           )
         ],
@@ -128,5 +143,12 @@ class _EditNoteViewState extends State<EditNoteView> {
         },
       ),
     );
+  }
+
+  displaySnackBar(String message) {
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Text(message),
+      duration: const Duration(seconds: 2),
+    ));
   }
 }

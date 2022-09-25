@@ -66,7 +66,7 @@ class NotesDatabase {
     return map.length > 0 ? map.first : null;
   }
 
-  Future<void> deleteNote(String id) async {
+  Future<void> deleteNote(int id) async {
     final db = await instance.database;
     await db.delete(NotesFields.tableName,
         where: '${NotesFields.id} = ?', whereArgs: [id]);

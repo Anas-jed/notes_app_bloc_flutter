@@ -12,3 +12,8 @@ class EditNoteSubmitted extends EditNoteEvent{
   EditNoteSubmitted({required this.noteModel});
 }
 
+class EditNoteDeleted extends EditNoteEvent{
+  int id;
+  EditNoteDeleted({required this.id});
+}
+

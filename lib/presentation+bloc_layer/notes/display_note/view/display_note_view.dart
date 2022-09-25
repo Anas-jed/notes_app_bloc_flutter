@@ -22,6 +22,7 @@ class _DisplayNoteViewState extends State<DisplayNoteView> {
     return Scaffold(
         backgroundColor: AppColors.whiteDark,
         appBar: AppBar(
+          centerTitle: true,
           title: const Text(Strings.notes),
         ),
         body: BlocBuilder<DisplayNoteBloc, DisplayNoteState>(

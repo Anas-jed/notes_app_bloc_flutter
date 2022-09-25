@@ -15,4 +15,6 @@ class EditNoteLoading extends EditNoteState {}
 
 class EditNoteSuccess extends EditNoteState {}
 
+class EditNoteDeleteSuccess extends EditNoteState{}
+
 

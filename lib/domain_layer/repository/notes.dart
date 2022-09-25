@@ -10,7 +10,7 @@ class NotesRepository implements INotesRepository {
   NotesRepository({required this.notesDatabase});
 
   @override
-  Future<void> deleteNote(String id) async {
+  Future<void> deleteNote(int id) async {
     await notesDatabase.deleteNote(id);
   }
 

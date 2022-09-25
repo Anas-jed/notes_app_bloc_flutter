@@ -13,7 +13,7 @@ abstract class INotesRepository{
   Future<void> updateNote(NoteModel noteModel);
 
   ///Deletes a note with the id if exists or throw an exception if id does not exist
-  Future<void> deleteNote(String id);
+  Future<void> deleteNote(int id);
 
 }
 
